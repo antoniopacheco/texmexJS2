@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>Create a function that can copy either all or specific properties of an object into another. The functionality should depend on the arguments received. 
+	 // properties of objB are copied onto objA
+copyProp(objA, objB);
+</p>
+<script type="text/javascript">
+	function copyProp(target,source,attributes){
+		search = attributes==undefined?false:true;
+		for(var attribute in source){
+			if(search){
+				if(attributes.indexOf(attribute)!=-1)
+					target[attribute]=source[attribute];
+			}else
+				target[attribute]=source[attribute];
+		} 
+	};
+
+	var a = {
+		'a':'hi',
+		'b':'bye',
+		'c':'goodbye',
+		'd':'whatsapp'
+	}
+	var b ={
+
+	}
+	console.log(b);
+	copyProp(b,a,['b']);
+	console.log(b);
+</script>
+</body>)
+</html>
