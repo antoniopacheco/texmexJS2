@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p id="test">Create a function that will set the color, font-size, and background color of a DOM element.
+If there are fewer arguments, it should place a default value. 
+Use the this parameter to access the values of the DOM element. (e.g. this.color or this.style.color)
+</p>
+<script type="text/javascript">
+	function isElement(obj) {
+  		try {
+    		return obj instanceof HTMLElement;
+  		}catch(e){
+    		return (typeof obj==="object") &&
+      		(obj.nodeType===1) && (typeof obj.style === "object") &&
+      		(typeof obj.ownerDocument ==="object");
+  }
+}
+	function setStyle(element, color, size, bgcolor){
+		if(!isElement(element))
+			throw "not a DOM element";
+		bgcolor = bgcolor !=undefined ? bgcolor : 'gray';
+		size = size !=undefined ? size : '17px';
+		color = color !=undefined ? color : 'black';
+
+		element.style.color = color;
+		element.style.fontSize  = size;
+		element.style.backgroundColor  = bgcolor;
+	}
+
+	var myEl = document.getElementById('test');
+	setStyle(myEl,'white','22px','green');
+	//setStyle(myEl,'white','22px');
+	//setStyle('hi');
+</script>
+</body>
+</html>
