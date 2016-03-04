@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>
+Create a function that will:
+return the number of vowels in a string
+return the number of digits in a whole number using logarithm operations.
+	Must be the same function.
+</p>
+<script type="text/javascript">
+	function count(input){
+		switch (typeof input){
+			case 'number':
+				return Math.floor(Math.log(input) * Math.LOG10E + 1);
+			break;
+
+			case 'string':
+				var vowels = input.match(/[aeiou]/gi);
+  				return vowels === null ? 0 : vowels.length;
+			break;
+
+			default:
+				console.log(typeof input);
+			break;
+		}
+	}
+
+	var vowels = count('This is My String and should rEtUn 8');
+	var digits = count();
+	console.log(vowels);
+	console.log(digits);
+</script>
+</body>
+</html>
