@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>
+Create a function that can limit the execution of other functions to a determined amount of times. 
+Example:
+function limitFunc (fn, num) { ... }
+var limited = limitFunc (alert, 2);
+limited(); // executes fine
+limited(); // executes fine
+limited(); // does not execute
+</p>
+<script type="text/javascript">
+function limitFunc(fn, num) {
+	var cant = num;
+	var i=0;
+	return (function (){
+		if(i < cant){
+			fn();
+			i++;
+		}
+		
+	});
+}
+var myfn = (function(){
+	console.log('hi');
+});
+var myfn2 = (function(){
+	console.log('hi2');
+});
+var myfn3 = (function(){
+	console.log('hi3');
+});
+var limited = limitFunc (myfn, 2);
+limited(); // executes fine
+limited(); // executes fine
+limited(); // does not execute
+limited(); // does not execute
+
+var limited2 = limitFunc (myfn2, 2);
+var limited3 = limitFunc (myfn3, 2);
+
+limited2(); // executes fine
+limited3(); // executes fine
+limited2(); // executes fine
+limited3(); // executes fine
+limited2(); // does not execute
+limited3(); // does not execute
+</script>
+</body>
+</html>
