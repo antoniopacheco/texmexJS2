@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<!-- Create a tree structure and a function that will display all of the elements in that tree. The function should not require any change in case the structure changes.
+Example of tree structure:
+
+        A 
+     /  |    \
+   a    b    c
+   |   /  |     | \
+ aa ba bb  ca cb
+                      |
+                      cba -->
+ <div id="result">
+ </div>
+<script type="text/javascript">
+	var input={
+		name:'A',
+		childs:[
+			{
+				name:'a',
+				childs:[
+					{
+						name:'aa'
+					},
+					{
+						name:'ba'
+					}
+				]
+			},
+			{
+				name:'b',
+				childs:[
+					{
+						name:'bb'
+					}
+				]
+			},
+			{
+				name:'c',
+				childs:[
+					{
+						name:'ca'
+					},
+					{
+						name:'cb',
+						childs: [
+							{
+								name:'cba'
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+	
+	
+	
+	function createArrayUl(array,string){
+		string = typeof string == 'undefined'?'':string;
+		string+='<ul>';
+		string+='<li>';
+		string+=array['name'];
+			if(typeof array['childs'] == 'object'){
+				for(var i=0; i< array['childs'].length; i++)
+					string = createArrayUl(array['childs'][i],string);
+			}
+		string+='</li>';
+		string+='</ul>';
+		return string;
+	}
+
+	var res=createfr(createArrayUl(input));
+	output = document.getElementById('result');
+	output.insertBefore(res, output.childNodes[0]);
+
+	function createfr(htmlStr) {
+	    var frag = document.createDocumentFragment(),
+	        temp = document.createElement('div');
+	    temp.innerHTML = htmlStr;
+	    while (temp.firstChild) {
+	        frag.appendChild(temp.firstChild);
+	    }
+	    return frag;
+	}
+</script>
+</body>
+</html>
